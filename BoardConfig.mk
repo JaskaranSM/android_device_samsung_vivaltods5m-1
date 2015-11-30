@@ -19,11 +19,16 @@ BOARD_VENDOR := samsung
 # Assert
 TARGET_OTA_ASSERT_DEVICE := vivaltods5m,G313HU,SM-G313HU,hawaii
 
+# Disable prebuilt chromium
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := false
+
 # Kernel
 BOARD_KERNEL_BASE := 0x81e00000
 BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_CONFIG := bcm21664_hawaii_ss_vivaltods5m_rev00_cm_defconfig
-TARGET_KERNEL_SOURCE := ../kernel/samsung/hawaii
+TARGET_KERNEL_SOURCE := kernel/samsung/hawaii
+KERNEL_TOOLCHAIN_PREFIX := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7/bin/arm-eabi-
+BOARD_MKBOOTIMG_ARGS:=--second $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/hawaii_ss_vivaltods5m_rev00.dtb
 
 # PARTITION SIZE
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -87,7 +92,7 @@ BOARD_USES_ALSA_AUDIO := true
 # of an SDK AVD. Note that this operation only works on Linux for now
 ifeq ($(HOST_OS),linux)
   ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
+    WITH_DEXPREOPT := false
   endif
 endif
 
@@ -107,19 +112,26 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd-vivaltods5m.hawaii
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/vivaltods5m/ril/
 
+# Philz edits
+RECOVERY_VARIANT := philz
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+DEVICE_RESOLUTION := 480x800
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_10x18.h\"
+
 # Recovery
-#TARGET_RECOVERY_INITRC := 
-TARGET_RECOVERY_FSTAB := device/samsung/vivaltods5m/ramdisk/fstab.hawaii_ss_vvivaltods5m
+TARGET_RECOVERY_INITRC := device/samsung/vivaltods5m/ramdisk/init.recovery.rc
+TARGET_RECOVERY_FSTAB := device/samsung/vivaltods5m/ramdisk/fstab.hawaii_ss_vivaltods5m
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
-BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_RECOVERY_ALWAYS_WIPES := false
+BOARD_RECOVERY_HANDLES_MOUNT := true
+BOARD_SUPPRESS_EMMC_WIPE := true
+BOARD_USES_MMCUTILS := false
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
-BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_RECOVERY_HANDLES_MOUNT := true
-BOARD_USES_MMCUTILS := false
-BOARD_RECOVERY_ALWAYS_WIPES := false
-BOARD_SUPPRESS_EMMC_WIPE := true
+
 
 # CMHW
 BOARD_HARDWARE_CLASS := hardware/samsung/cmhw/ device/samsung/vivaltods5m/cmhw/
