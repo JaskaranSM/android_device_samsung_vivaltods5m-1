@@ -1,4 +1,4 @@
-# Inherit some common CM stuff.
+# Inherit some common Lineage stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
@@ -9,7 +9,7 @@ PRODUCT_RELEASE_NAME := SM-G313HU
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := vivaltods5m
-PRODUCT_NAME := cm_vivaltods5m
+PRODUCT_NAME := lineage_vivaltods5m
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := SM-G313HU
