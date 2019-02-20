@@ -38,7 +38,7 @@ for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
 done
 
 (cat << EOF) > ../../../$OUTDIR/$DEVICE-vendor.mk
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ DEVICE_PACKAGE_OVERLAYS := device/$VENDOR/$DEVICE/overlay
 EOF
 
 (cat << EOF) > ../../../$OUTDIR/BoardConfigVendor.mk
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
