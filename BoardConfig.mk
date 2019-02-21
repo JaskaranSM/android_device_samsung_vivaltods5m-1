@@ -1,5 +1,5 @@
 USE_CAMERA_STUB := true
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+TARGET_PREBUILT_KERNEL := device/samsung/vivaltods5m/kernel
 
 # inherit from the proprietary version
 -include vendor/samsung/vivaltods5m/BoardConfigVendor.mk
