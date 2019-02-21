@@ -1,4 +1,5 @@
 USE_CAMERA_STUB := true
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 # inherit from the proprietary version
 -include vendor/samsung/vivaltods5m/BoardConfigVendor.mk
@@ -25,10 +26,10 @@ PRODUCT_PREBUILT_WEBVIEWCHROMIUM := false
 # Kernel
 BOARD_KERNEL_BASE := 0x81e00000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_KERNEL_CONFIG := vivaltods5m_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/hawaii
-KERNEL_TOOLCHAIN_PREFIX := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
-BOARD_MKBOOTIMG_ARGS:=--second $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/hawaii_ss_vivaltods5m_rev00.dtb
+#TARGET_KERNEL_CONFIG := vivaltods5m_defconfig
+#TARGET_KERNEL_SOURCE := kernel/samsung/hawaii
+#KERNEL_TOOLCHAIN_PREFIX := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
+#BOARD_MKBOOTIMG_ARGS:=--second $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/hawaii_ss_vivaltods5m_rev00.dtb
 
 # PARTITION SIZE
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -39,9 +40,9 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Vivaltds5m needs this in the boot image
-BOARD_MKBOOTIMG_ARGS := --second $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/hawaii_ss_vivaltods5m_rev00.dtb
+#BOARD_MKBOOTIMG_ARGS := --second $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/hawaii_ss_vivaltods5m_rev00.dtb
 # Use this if you use a prebuilt kernel
-#BOARD_MKBOOTIMG_ARGS := --second device/samsung/vivaltods5m/second.bin
+BOARD_MKBOOTIMG_ARGS := --second device/samsung/vivaltods5m/second.bin
 
 # FLASH BLOCK SIZE (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_FLASH_BLOCK_SIZE := 262144
